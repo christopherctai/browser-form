@@ -41,7 +41,7 @@ function checkEmailInput() {
         setErrorFor(email, emailNotValid.tooLong);
     } else if (emailValue.length < 3) {
         setErrorFor(email, emailNotValid.tooShort);
-    } else if (!emailValue.checkValidity()) {
+    } else if (!email.checkValidity()) {
         setErrorFor(email, emailNotValid.notEmail);
     } else {
         setSuccessFor(email);
