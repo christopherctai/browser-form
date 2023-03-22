@@ -35,16 +35,19 @@ form {
     width: 90%; 
 }
 
+.form-row.invalid input {
+    background-color: rgb(255, 139, 139);
+}
+
+.form-row.valid input {
+    background-color: rgb(117, 255, 117); 
+}
 input {
     border-radius: 7px; 
     border: 1px solid gray; 
-    padding: 5px; 
+    font-size: 20px; 
+    padding: 10px; 
     outline: none;
-}
-
-
-input:invalid {
-    border: 2px solid red; 
 }
 
 .error-message {
