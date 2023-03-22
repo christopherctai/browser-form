@@ -26,6 +26,53 @@ const passwordConfirmation = document.getElementById('password-confirmation');
 email.addEventListener('input', () => {
     checkEmailInput()
 });
+country.addEventListener('input', () => {
+    checkCountryInput()
+})
+zipcode.addEventListener('input', () => {
+    checkZipcodeInput()
+})
+password.addEventListener('input', () => {
+    checkPasswordInput()
+})
+passwordConfirmation.addEventListener('input', () => {
+    checkPasswordConfirmationInput()
+})
+
+function checkCountryInput() {
+    const countryValue = country.value.trim(); 
+    const countryNotValid = {
+        noCountry: "You must include a country!",
+        tooLong: "Your country doesn't exist! Too long",
+        tooShort: "Your country is probably longer than 1 character"
+    }
+    if (countryValue === '') {
+        setErrorFor(country, countryNotValid.noCountry);
+    } else if (countryValue.length > 50) {
+        setErrorFor(country, countryNotValid.tooLong);
+    } else if (countryValue.length < 2) {
+        setErrorFor(country, countryNotValid.tooShort);
+    } else {
+        setSuccessFor(country);
+    }
+
+}
+
+function checkZipcodeInput() {
+    const zipcodeValue = zipcode.value.trim();
+    const zipcodeNotValid = {
+        noZipcode: "You must include a zipcode",
+        
+    }
+}
+
+function checkPasswordInput() {
+
+}
+
+function checkPasswordConfirmationInput() {
+
+}
 
 function checkEmailInput() {
     const emailValue = email.value.trim();
@@ -49,7 +96,7 @@ function checkEmailInput() {
 }
 
 
-function checkInputs() {
+function checkAllInputs() {
     const emailValue = email.value.trim();
     const countryValue = country.value.trim();
     const zipcodeValue = zipcode.value.trim();
