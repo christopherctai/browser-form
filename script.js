@@ -62,7 +62,20 @@ function checkZipcodeInput() {
     const zipcodeValue = zipcode.value.trim();
     const zipcodeNotValid = {
         noZipcode: "You must include a zipcode",
-        
+        zipcodePatternMismatch: "Your zipcode is not valid!",
+        tooShort: "Your zipcode needs to be longer",
+        tooLong: "Your zipcode is too long"
+    }
+    if (zipcodeValue === "") {
+        setErrorFor(zipcode, zipcodeNotValid.noZipcode)
+    } else if (zipcodeValue.length > 10) {
+        setErrorFor(zipcode, zipcodeNotValid.tooLong) 
+    } else if (zipcodeValue.length < 2) {
+        setErrorFor(zipcode, zipcodeNotValid.tooShort) 
+    } else if (!/(^\d{5}$)|(^\d{5}-\d{4}$)/.test(zipcodeValue)) {
+        setErrorFor(zipcode, zipcodeNotValid.zipcodePatternMismatch)
+    } else {
+        setSuccessFor(zipcode);
     }
 }
 
