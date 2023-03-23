@@ -80,7 +80,7 @@ function checkZipcodeInput() {
 }
 
 function checkPasswordInput() {
-
+    
 }
 
 function checkPasswordConfirmationInput() {
