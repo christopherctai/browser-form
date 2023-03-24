@@ -33,10 +33,10 @@ zipcode.addEventListener('input', () => {
     checkZipcodeInput()
 })
 password.addEventListener('input', () => {
-    checkPasswordInput()
+    checkPasswordInput();
 })
 passwordConfirmation.addEventListener('input', () => {
-    checkPasswordConfirmationInput()
+    checkPasswordConfirmationInput();
 })
 
 function checkCountryInput() {
@@ -80,11 +80,31 @@ function checkZipcodeInput() {
 }
 
 function checkPasswordInput() {
-    
+    const passwordValue = password.value.trim();
+    const passwordNotValid = {
+        noPassword: "You must include a password",
+        tooLong: "Password must be less than 30 characters",
+        tooShort: "Password must be greater than 5 characters"
+    }
+    if (passwordValue === '') {
+        setErrorFor(password, passwordNotValid.noPassword);
+    } else if (passwordValue.length > 29) {
+        setErrorFor(password, passwordNotValid.tooLong);
+    } else if (passwordValue.length < 5) {
+        setErrorFor(password, passwordNotValid.tooShort);
+    } else {
+        setSuccessFor(password);
+    }
 }
 
 function checkPasswordConfirmationInput() {
-
+    const passwordValue = password.value.trim();
+    const passwordConfirmationValue = passwordConfirmation.value.trim()
+    if (passwordValue !== passwordConfirmationValue) {
+        setErrorFor(passwordConfirmation, "Passwords do not match!");
+    } else {
+        setSuccessFor(passwordConfirmation);
+    }
 }
 
 function checkEmailInput() {
