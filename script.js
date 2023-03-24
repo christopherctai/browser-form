@@ -21,6 +21,7 @@ const country = document.getElementById('country');
 const zipcode = document.getElementById('zip');
 const password = document.getElementById('password');
 const passwordConfirmation = document.getElementById('password-confirmation');
+let formIsValid = true; 
 
 email.addEventListener('input', () => {
     checkEmailInput()
@@ -49,6 +50,17 @@ function checkAllInputs() {
     checkZipcodeInput();
     checkPasswordInput();
     checkPasswordConfirmationInput();
+    displayBanner();
+}
+
+function displayBanner() {
+    const validationMessage = document.querySelector('.validation-message');
+    console.log(formIsValid);
+    if (formIsValid) {
+        validationMessage.textContent = "Congrats! Your form  has been validated";
+    } else {
+        validationMessage.textContent = "Please fix the errors in the form";
+    }
 }
 
 function checkCountryInput() {
@@ -138,6 +150,7 @@ function checkEmailInput() {
     } else {
         setSuccessFor(email);
     }
+    console.log(formIsValid);
 }
 
 
@@ -148,6 +161,7 @@ function setErrorFor(input, message) {
     const errorMessage = formRow.querySelector('.error-message');
     errorMessage.textContent = message; 
 }
+
 
 function setSuccessFor(input) {
     const formRow = input.parentElement;
