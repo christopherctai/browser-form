@@ -15,7 +15,6 @@ Do this for ALL inputs.
 
 */
 
-
 const form = document.getElementById('form');
 const email = document.getElementById('email');
 const country = document.getElementById('country');
@@ -38,6 +37,19 @@ password.addEventListener('input', () => {
 passwordConfirmation.addEventListener('input', () => {
     checkPasswordConfirmationInput();
 })
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    checkAllInputs(); 
+})
+
+
+function checkAllInputs() {
+    checkEmailInput();
+    checkCountryInput();
+    checkZipcodeInput();
+    checkPasswordInput();
+    checkPasswordConfirmationInput();
+}
 
 function checkCountryInput() {
     const countryValue = country.value.trim(); 
@@ -128,20 +140,6 @@ function checkEmailInput() {
     }
 }
 
-
-function checkAllInputs() {
-    const emailValue = email.value.trim();
-    const countryValue = country.value.trim();
-    const zipcodeValue = zipcode.value.trim();
-    const passwordValue = password.value.trim();
-    const passwordConfirmationValue = passwordConfirmation.value.trim();
-
-    if (emailValue === '') {
-        setErrorFor(email, 'Email cannot be blank');
-    } else {
-        setSuccessFor(email);
-    }
-}
 
 
 function setErrorFor(input, message) {
